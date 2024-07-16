@@ -5,6 +5,7 @@ import com.example.demo.service.BookService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -36,9 +37,13 @@ public class LiterAluraChallengeJavaApplication {
 				case 1:
 					System.out.println("Ingrese su consulta (ej. search=dickens):");
 					String query = scanner.nextLine();
-					List<Book> books = bookService.fetchBooks(query);
-					bookService.saveBooks(books);
-					System.out.println("Libros guardados en la base de datos.");
+					try {
+						List<Book> books = bookService.fetchBooks(query);
+						bookService.saveBooks(books);
+						System.out.println("Libros guardados en la base de datos.");
+					} catch (IOException | InterruptedException e) {
+						System.out.println("Error al buscar libros: " + e.getMessage());
+					}
 					break;
 				case 2:
 					List<Book> allBooks = bookService.getAllBooks();
