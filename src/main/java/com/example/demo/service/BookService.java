@@ -1,21 +1,20 @@
 package com.example.demo.service;
 
-import com.example.demo.model.Book;
-import com.example.demo.model.BookResponse;
-import com.example.demo.repository.BookRepository;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
-
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.List;
+
+import com.example.demo.model.Book;
+import com.example.demo.model.BookResponse;
+import com.example.demo.repository.BookRepository;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class BookService {
@@ -61,4 +60,5 @@ public class BookService {
         return bookRepository.findById(id).orElse(null);
     }
 }
+
 

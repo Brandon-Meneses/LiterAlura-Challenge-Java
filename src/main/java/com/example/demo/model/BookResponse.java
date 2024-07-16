@@ -1,13 +1,16 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class BookResponse {
     private int count;
     private String next;
     private String previous;
     private List<Book> results;
 
+    // Getters y Setters
     public int getCount() {
         return count;
     }
@@ -39,4 +42,15 @@ public class BookResponse {
     public void setResults(List<Book> results) {
         this.results = results;
     }
+
+    @Override
+    public String toString() {
+        return "BookResponse{" +
+                "count=" + count +
+                ", next='" + next + '\'' +
+                ", previous='" + previous + '\'' +
+                ", results=" + results +
+                '}';
+    }
 }
+

@@ -2,6 +2,8 @@ package com.example.demo;
 
 import com.example.demo.model.Book;
 import com.example.demo.service.BookService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -10,20 +12,25 @@ import java.util.List;
 import java.util.Scanner;
 
 @SpringBootApplication
-public class LiterAluraChallengeJavaApplication {
+public class LiterAluraChallengeJavaApplication implements CommandLineRunner {
 
-	private static BookService bookService;
+	private final BookService bookService;
 
+	@Autowired
 	public LiterAluraChallengeJavaApplication(BookService bookService) {
-		LiterAluraChallengeJavaApplication.bookService = bookService;
+		this.bookService = bookService;
 	}
-	public static void main(String[] args) {
 
+	public static void main(String[] args) {
 		SpringApplication.run(LiterAluraChallengeJavaApplication.class, args);
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
 		start();
 	}
 
-	public static void start() {
+	private void start() {
 		Scanner scanner = new Scanner(System.in);
 		while (true) {
 			System.out.println("1. Buscar libros");
@@ -66,5 +73,4 @@ public class LiterAluraChallengeJavaApplication {
 			}
 		}
 	}
-
 }

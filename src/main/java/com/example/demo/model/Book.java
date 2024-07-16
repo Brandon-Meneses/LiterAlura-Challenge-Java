@@ -1,8 +1,11 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.List;
 import java.util.Map;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Book {
     private Long id;
     private String title;
@@ -11,10 +14,13 @@ public class Book {
     private List<String> bookshelves;
     private List<String> languages;
     private Boolean copyright;
-    private String media_type;
+    @JsonAlias("media_type")
+    private String mediaType;
     private Map<String, String> formats;
-    private Integer download_count;
+    @JsonAlias("download_count")
+    private Integer downloadCount;
 
+    // Getters y Setters
     public Long getId() {
         return id;
     }
@@ -71,12 +77,12 @@ public class Book {
         this.copyright = copyright;
     }
 
-    public String getMedia_type() {
-        return media_type;
+    public String getMediaType() {
+        return mediaType;
     }
 
-    public void setMedia_type(String media_type) {
-        this.media_type = media_type;
+    public void setMediaType(String mediaType) {
+        this.mediaType = mediaType;
     }
 
     public Map<String, String> getFormats() {
@@ -87,12 +93,27 @@ public class Book {
         this.formats = formats;
     }
 
-    public Integer getDownload_count() {
-        return download_count;
+    public Integer getDownloadCount() {
+        return downloadCount;
     }
 
-    public void setDownload_count(Integer download_count) {
-        this.download_count = download_count;
+    public void setDownloadCount(Integer downloadCount) {
+        this.downloadCount = downloadCount;
     }
-// getters y setters
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", authors=" + authors +
+                ", subjects=" + subjects +
+                ", bookshelves=" + bookshelves +
+                ", languages=" + languages +
+                ", copyright=" + copyright +
+                ", mediaType='" + mediaType + '\'' +
+                ", formats=" + formats +
+                ", downloadCount=" + downloadCount +
+                '}';
+    }
 }

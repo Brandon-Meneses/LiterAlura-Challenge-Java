@@ -1,24 +1,31 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Person {
-    private Integer birth_year;
-    private Integer death_year;
+    @JsonAlias("birth_year")
+    private Integer birthYear;
+    @JsonAlias("death_year")
+    private Integer deathYear;
     private String name;
 
-    public Integer getBirth_year() {
-        return birth_year;
+    // Getters y Setters
+    public Integer getBirthYear() {
+        return birthYear;
     }
 
-    public void setBirth_year(Integer birth_year) {
-        this.birth_year = birth_year;
+    public void setBirthYear(Integer birthYear) {
+        this.birthYear = birthYear;
     }
 
-    public Integer getDeath_year() {
-        return death_year;
+    public Integer getDeathYear() {
+        return deathYear;
     }
 
-    public void setDeath_year(Integer death_year) {
-        this.death_year = death_year;
+    public void setDeathYear(Integer deathYear) {
+        this.deathYear = deathYear;
     }
 
     public String getName() {
@@ -28,7 +35,14 @@ public class Person {
     public void setName(String name) {
         this.name = name;
     }
-// getters y setters
 
-
+    @Override
+    public String toString() {
+        return "Person{" +
+                "birthYear=" + birthYear +
+                ", deathYear=" + deathYear +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
+
